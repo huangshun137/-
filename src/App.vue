@@ -1,0 +1,151 @@
+<template>
+  <div id="app">
+    <headerComponent></headerComponent>
+    <router-view :key="$route.fullPath" v-if="isRouterAlive"/>
+    <footerComponent></footerComponent>
+  </div>
+</template>
+
+<script>
+import headerComponent from './components/header.vue'
+import footerComponent from './components/footer.vue'
+export default {
+  name: 'App',
+  provide () {
+    return {
+      reload: this.reload
+    }
+  },
+  data () {
+    return {
+      isRouterAlive: true
+    }
+  },
+  methods: {
+    reload () {
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
+    }
+  },
+  components: {headerComponent, footerComponent}
+}
+</script>
+
+<style>
+/*清除默认样式*/
+body, div, dl, dt, dd, ul, ol, nl, li, h1, h2, h3, h4, h5, h6, p, span, a, b, strong, object, iframe, label,
+img, select, form, input, textarea, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time,
+mark, audio, video {margin:0;padding:0}
+body{
+  font-size:12px;
+  font-family:'微软雅黑';
+}
+.left{
+  float:left;
+  display:inline;
+}
+.right{
+  float:right;
+  display:inline;
+}
+.clear:after{
+  content:"";
+  clear:both;
+  display:block;
+}
+.clear{
+  zoom:1;
+}
+a{
+  text-decoration:none;
+  font-size:12px;
+}
+a:hover{
+  text-decoration:underline;
+}
+span{
+  font-size:12px;
+}
+li{
+  list-style:none;
+}
+img{
+  border:none 0;
+  vertical-align:middle;
+}
+.col_f{
+  color:#fff;
+}
+.col_0{
+  color:#000;
+}
+.col_3{
+  color:#333;
+}
+.col_4e4e4e{
+  color:#4e4e4e;
+}
+.col_6{
+  color:#666;
+}
+.col_83b91f{
+  color:#83b91f;
+}
+.col_ls54{
+  color:#54b434;
+}
+.f_12{
+  font-size:12px;
+}
+.f_14{
+  font-size:14px;
+}
+.f_16{
+  font-size:16px;
+}
+.f_17{
+  font-size:17px;
+}
+.f_18{
+  font-size:18px;
+}
+.f_20{
+  font-size:20px;
+}
+.f_22{
+  font-size:22px;
+}
+.f_24{
+  font-size:24px;
+}
+.pad_l_20{
+  padding-left:20px;
+}
+.mar_l_10{
+  margin-left:10px;
+}
+.mar_t_10{
+  margin-top:10px;
+}
+.mar_r_10{
+  margin-right:10px;
+}
+.mar_b_10{
+  margin-bottom:10px;
+}
+input{
+  vertical-align:middle;
+}
+.t_center{
+  text-align:center;
+}
+.t_2em{
+  text-indent:2em;
+}
+.tex_right{
+  text-align:right;
+}
+</style>

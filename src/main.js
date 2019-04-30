@@ -3,22 +3,28 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
-import 'jquery'
-
-import AMap from 'vue-amap'
-Vue.use(AMap)
-AMap.initAMapApiLoader({
-  key: '049ca82d22dedb9b8c5522ac34611e06',
-  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor']
-})
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/iconfont.css'
+import '@/assets/styles/main.scss'
 
 Vue.config.productionTip = false
+Vue.use(ElementUI)
+
+Vue.filter('dateFilter',function(val){//val原日期对象
+  var date=new Date(val);
+  var y=date.getFullYear();
+  var m=date.getMonth()+1;
+  var d=date.getDate();
+  m<10&&(m='0'+m);
+  d<10&&(d='0'+d);
+  return `${y}-${m}-${d}`;//返回 日期格式对象
+});
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  components: {App}
 })
